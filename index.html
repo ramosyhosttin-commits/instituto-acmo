@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ACMo | Instituto de Arte, Cuerpo y Movimiento</title>
-    <!-- Favicon para la pestaña del navegador -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230a0a0a'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-family='Cinzel, serif' font-size='65' fill='%23ffffff' font-weight='bold'>A</text></svg>">
+    <!-- Logo oficial exacto en la pestaña del navegador -->
+    <link rel="icon" type="image/png" href="https://lh3.googleusercontent.com/d/1ndKcKmEFL2Fr1hg7BxvT8nRDjss-Fzup">
     
     <!-- Google Fonts para estilo editorial y elegante -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -39,7 +39,7 @@
             line-height: 1.6;
         }
 
-        /* NAVBAR CON SOLO TEXTO LIMPIO */
+        /* NAVBAR CON TEXTO LIMPIO */
         .navbar {
             position: fixed;
             top: 0;
@@ -731,7 +731,7 @@
             const tarjetasVideo = document.querySelectorAll('.video-card');
             tarjetasVideo.forEach(card => {
                 card.addEventListener('dblclick', () => {
-                    if (!verificarAdmin()) return;
+                    if (!verificarAdminopedri) return;
 
                     const iframe = card.querySelector('.editable-video');
                     const linkActual = iframe.src;
