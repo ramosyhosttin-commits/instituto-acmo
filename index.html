@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ACMo | Instituto de Arte, Cuerpo y Movimiento</title>
+    <!-- Favicon con el logo oficial para la pestaña -->
+    <link rel="icon" type="image/png" href="https://lh3.googleusercontent.com/d/1ndKcKmEFL2Fr1hg7BxvT8nRDjss-Fzup">
+    
     <!-- Google Fonts para estilo editorial y elegante -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -36,7 +39,7 @@
             line-height: 1.6;
         }
 
-        /* NAVBAR */
+        /* NAVBAR CON EL LOGO OFICIAL */
         .navbar {
             position: fixed;
             top: 0;
@@ -45,31 +48,24 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 50px;
-            background: rgba(10, 10, 10, 0.85);
-            backdrop-filter: blur(10px);
+            padding: 15px 50px;
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(12px);
             z-index: 1000;
             border-bottom: 1px solid var(--gray-contrast);
         }
 
         .nav-brand {
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
         }
 
-        .brand-text {
-            font-family: var(--font-heading);
-            font-size: 1.8rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            color: var(--white);
-            outline: none;
-        }
-
-        .brand-sub {
-            font-size: 0.7rem;
-            color: var(--gray-text);
-            letter-spacing: 1px;
+        .nav-brand img {
+            height: 45px;
+            width: auto;
+            object-fit: contain;
         }
 
         .nav-links {
@@ -517,17 +513,16 @@
 </head>
 <body>
 
-    <!-- BOTÓN FLOTANTE DE WHATSAPP CON TU NÚMERO -->
+    <!-- BOTÓN FLOTANTE DE WHATSAPP -->
     <a href="https://wa.me/584121392237?text=Hola,%20deseo%20más%20información%20sobre%20las%20inscripciones%20y%20cursos%20del%20Instituto%20ACMo" class="whatsapp-float" target="_blank" title="Escríbenos por WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
-    <!-- BARRA DE NAVEGACIÓN -->
+    <!-- BARRA DE NAVEGACIÓN CON EL LOGO OFICIAL -->
     <header class="navbar">
-        <div class="nav-brand">
-            <span class="brand-text" contenteditable="false">ACMo</span>
-            <span class="brand-sub">Instituto de Arte, Cuerpo y Movimiento</span>
-        </div>
+        <a href="#inicio" class="nav-brand">
+            <img src="https://lh3.googleusercontent.com/d/1ndKcKmEFL2Fr1hg7BxvT8nRDjss-Fzup" alt="Instituto ACMO">
+        </a>
         <nav class="nav-links">
             <a href="#inicio">Inicio</a>
             <a href="#disciplinas">Disciplinas</a>
@@ -681,7 +676,7 @@
         </div>
     </section>
 
-    <!-- FOOTER CON NÚMERO DE TELÉFONO -->
+    <!-- FOOTER -->
     <footer id="contacto" class="footer">
         <div class="footer-content">
             <h3 contenteditable="false">ACMo Instituto</h3>
