@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACMo | Instituto de Arte, Cuerpo y Movimiento</title>
+    <!-- Google Fonts para estilo editorial y elegante -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #141414;
+            --gray-contrast: #262626;
+            --gray-text: #a3a3a3;
+            --white: #ffffff;
+            --accent: #8b1e41; /* Vino tinto / Alta Costura */
+            --font-heading: 'Cinzel', serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--white);
+            font-family: var(--font-body);
+            line-height: 1.6;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--gray-contrast);
+        }
+
+        .nav-brand {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-text {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--white);
+            outline: none;
+        }
+
+        .brand-sub {
+            font-size: 0.7rem;
+            color: var(--gray-text);
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .btn-nav {
+            border: 1px solid var(--white);
+            padding: 8px 20px;
+            transition: all 0.3s !important;
+        }
+
+        .btn-nav:hover {
+            background: var(--white);
+            color: var(--bg-dark) !important;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.85)), url('https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&q=80&w=1600') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 850px;
+            z-index: 2;
+        }
+
+        .hero-subtitle {
+            font-size: 0.85rem;
+            letter-spacing: 4px;
+            color: var(--gray-text);
+            margin-bottom: 15px;
+            display: block;
+            outline: none;
+        }
+
+        .hero-title {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            outline: none;
+        }
+
+        .hero-desc {
+            font-size: 1.1rem;
+            color: var(--gray-text);
+            margin-bottom: 30px;
+            outline: none;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--white);
+            color: var(--bg-dark);
+            padding: 14px 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* SECCIÓN DISCIPLINAS */
+        .disciplinas-section {
+            padding: 100px 50px;
+            background-color: var(--bg-dark);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-tag {
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 10px;
+            display: block;
+            outline: none;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            outline: none;
+        }
+
+        .disciplinas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .disciplina-card {
+            background: var(--bg-card);
+            border: 1px solid var(--gray-contrast);
+            transition: transform 0.3s, border-color 0.3s;
+            overflow: hidden;
+        }
+
+        .disciplina-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .card-img-container {
+            position: relative;
+            height: 380px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .card-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .disciplina-card:hover .card-img-container img {
+            transform: scale(1.05);
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(5px);
+            padding: 6px 14px;
+            font-size: 0.65rem;
+            letter-spacing: 1px;
+            border: 1px solid var(--gray-contrast);
+            outline: none;
+        }
+
+        .card-body {
+            padding: 30px;
+        }
+
+        .card-title {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            outline: none;
+        }
+
+        .card-text {
+            color: var(--gray-text);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            outline: none;
+        }
+
+        /* SECCIÓN VIDEOS */
+        .videos-section {
+            padding: 100px 50px;
+            background-color: #0e0e0e;
+            border-top: 1px solid var(--gray-contrast);
+            border-bottom: 1px solid var(--gray-contrast);
+        }
+
+        .videos-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .video-card {
+            background: var(--bg-card);
+            border: 1px solid var(--gray-contrast);
+            padding: 20px;
+        }
+
+        .video-card h4 {
+            margin-top: 15px;
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            outline: none;
+        }
+
+        .video-hint {
+            font-size: 0.7rem;
+            color: var(--accent);
+            margin-top: 5px;
+            letter-spacing: 0.5px;
+        }
+
+        .video-frame {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            background: #000;
+        }
+
+        .video-frame iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* SECCIÓN NOSOTROS */
+        .about-section {
+            padding: 100px 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text p {
+            color: var(--gray-text);
+            margin: 20px 0;
+            font-size: 1.05rem;
+            outline: none;
+        }
+
+        .about-location {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--white);
+            font-weight: 500;
+        }
+
+        .about-location i {
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        .about-img {
+            height: 450px;
+            border: 1px solid var(--gray-contrast);
+            cursor: pointer;
+        }
+
+        .about-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* FOOTER */
+        .footer {
+            padding: 60px 50px;
+            background: #050505;
+            text-align: center;
+            border-top: 1px solid var(--gray-contrast);
+        }
+
+        .footer-content h3 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            outline: none;
+        }
+
+        .footer-content p {
+            color: var(--gray-text);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            outline: none;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .social-icons a {
+            color: var(--white);
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--accent);
+        }
+
+        .copyright {
+            font-size: 0.75rem;
+            color: #555;
+        }
+
+        @media(max-width: 768px) {
+            .navbar { padding: 15px 20px; }
+            .about-grid { grid-template-columns: 1fr; }
+            .videos-container { grid-template-columns: 1fr; }
+            .disciplinas-section, .videos-section, .about-section { padding: 60px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BARRA DE NAVEGACIÓN -->
+    <header class="navbar">
+        <div class="nav-brand">
+            <span class="brand-text" contenteditable="false">ACMo</span>
+            <span class="brand-sub">Instituto de Arte, Cuerpo y Movimiento</span>
+        </div>
+        <nav class="nav-links">
+            <a href="#inicio">Inicio</a>
+            <a href="#disciplinas">Disciplinas</a>
+            <a href="#videos">Videos</a>
+            <a href="#nosotros">Nosotros</a>
+            <a href="#contacto" class="btn-nav">Contacto</a>
+        </nav>
+        <div class="menu-toggle"><i class="fa-solid fa-bars"></i></div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <span class="hero-subtitle" contenteditable="false">BARQUISIMETO • VENEZUELA</span>
+            <h1 class="hero-title" contenteditable="false">ARTE, CUERPO Y MOVIMIENTO</h1>
+            <p class="hero-desc" contenteditable="false">Formación profesional en modelaje comercial, alta costura y expresión escénica de alto nivel.</p>
+            <div class="hero-buttons">
+                <a href="#disciplinas" class="btn-primary">EXPLORAR PROGRAMAS <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE DISCIPLINAS -->
+    <section id="disciplinas" class="disciplinas-section">
+        <div class="section-header">
+            <span class="section-tag" contenteditable="false">ESPECIALIDADES</span>
+            <h2 class="section-title" contenteditable="false">Formación Integral</h2>
+        </div>
+
+        <div class="disciplinas-grid">
+            <!-- 1. Alta Costura y Pasarela (Foto tuya en blanco y negro con vestido elegante) -->
+            <div class="disciplina-card">
+                <div class="card-img-container" title="Doble clic para cambiar (Requiere contraseña de administrador)">
+                    <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&q=80&w=800" alt="Alta Costura y Pasarela" class="editable-img">
+                    <div class="card-badge" contenteditable="false">ALTA COSTURA & PASARELA</div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title" contenteditable="false">Modelaje de Alta Gama</h3>
+                    <p class="card-text" contenteditable="false">Dominio absoluto de pasarela internacional, porte, alta costura, posturas de alta gama y elegancia escénica.</p>
+                </div>
+            </div>
+
+            <!-- 2. Modelaje Comercial -->
+            <div class="disciplina-card">
+                <div class="card-img-container" title="Doble clic para cambiar (Requiere contraseña de administrador)">
+                    <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=800" alt="Modelaje Comercial" class="editable-img">
+                    <div class="card-badge" contenteditable="false">FOTOGRAFÍA & PUBLICIDAD</div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title" contenteditable="false">Modelaje Comercial</h3>
+                    <p class="card-text" contenteditable="false">Técnicas especializadas para campañas fotográficas, comerciales de televisión, publicidad y expresión frente a cámaras.</p>
+                </div>
+            </div>
+
+            <!-- 3. Danza Contemporánea (Bailarín) -->
+            <div class="disciplina-card">
+                <div class="card-img-container" title="Doble clic para cambiar (Requiere contraseña de administrador)">
+                    <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&q=80&w=800" alt="Danza Contemporánea" class="editable-img">
+                    <div class="card-badge" contenteditable="false">DANZA CONTEMPORÁNEA</div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title" contenteditable="false">Danza & Movimiento</h3>
+                    <p class="card-text" contenteditable="false">Fluidez corporal, control muscular y sincronización rítmica para potenciar la seguridad y naturalidad en escena.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE VIDEOS -->
+    <section id="videos" class="videos-section">
+        <div class="section-header">
+            <span class="section-tag" contenteditable="false">MULTIMEDIA</span>
+            <h2 class="section-title" contenteditable="false">Pasarelas y Showcases</h2>
+        </div>
+        <div class="videos-container">
+            <div class="video-card">
+                <div class="video-frame">
+                    <iframe class="editable-video" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Pasarela ACMO 1" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <h4 contenteditable="false">Desfile de Alta Costura - Temporada Oficial</h4>
+                <p class="video-hint">🔒 Doble clic para cambiar enlace de YouTube (Solo Administrador)</p>
+            </div>
+            <div class="video-card">
+                <div class="video-frame">
+                    <iframe class="editable-video" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Pasarela ACMO 2" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <h4 contenteditable="false">Showcase de Modelaje Comercial y Estética</h4>
+                <p class="video-hint">🔒 Doble clic para cambiar enlace de YouTube (Solo Administrador)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN SOBRE NOSOTROS -->
+    <section id="nosotros" class="about-section">
+        <div class="about-grid">
+            <div class="about-text">
+                <span class="section-tag" contenteditable="false">FILOSOFÍA</span>
+                <h2 class="section-title" contenteditable="false">Elegancia, Disciplina y Vanguardia</h2>
+                <p contenteditable="false">En ACMO preparamos modelos y artistas integrales capaces de destacar en las pasarelas más exigentes y en producciones de alta gama, fusionando la técnica con la identidad propia.</p>
+                <div class="about-location">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span contenteditable="false">C.C. El Parral, piso 3 local 322, Barquisimeto, Lara.</span>
+                </div>
+            </div>
+            <div class="about-img" title="Doble clic para cambiar">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=800" alt="Instituto ACMO" class="editable-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contacto" class="footer">
+        <div class="footer-content">
+            <h3 contenteditable="false">ACMo Instituto</h3>
+            <p contenteditable="false">Transformando talentos en arte vivo.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+            <p class="copyright">© 2026 Instituto ACMO. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // CLAVE DE SEGURIDAD PARA EDITAR (Puedes cambiar "yhosttin2026" por la clave que prefieras)
+        const ADMIN_PASSWORD = "yhosttin2026";
+
+        function verificarAdmin() {
+            const pass = prompt("🔐 Acceso restringido para el Administrador. Ingresa tu contraseña:");
+            if (pass === ADMIN_PASSWORD) {
+                return true;
+            } else {
+                alert("❌ Contraseña incorrecta. No tienes permisos para editar.");
+                return false;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Cambiar imágenes con doble clic (Protegido por contraseña)
+            const imagenes = document.querySelectorAll('.editable-img');
+            imagenes.forEach(img => {
+                img.parentElement.addEventListener('dblclick', () => {
+                    if (!verificarAdmin()) return;
+                    
+                    const nuevaUrl = prompt("Ingresa el enlace (URL) de la nueva imagen:", img.src);
+                    if (nuevaUrl && nuevaUrl.trim() !== "") {
+                        img.src = nuevaUrl.trim();
+                        alert("¡Imagen actualizada con éxito!");
+                    }
+                });
+            });
+
+            // 2. Cambiar videos de YouTube con doble clic (Protegido por contraseña)
+            const tarjetasVideo = document.querySelectorAll('.video-card');
+            tarjetasVideo.forEach(card => {
+                card.addEventListener('dblclick', () => {
+                    if (!verificarAdmin()) return;
+
+                    const iframe = card.querySelector('.editable-video');
+                    const linkActual = iframe.src;
+                    const nuevoLink = prompt("Ingresa el enlace de YouTube (ej: https://www.youtube.com/watch?v=XXXX):", linkActual);
+                    
+                    if (nuevoLink && nuevoLink.trim() !== "") {
+                        let finalUrl = nuevoLink.trim();
+                        if (finalUrl.includes("watch?v=")) {
+                            const videoId = finalUrl.split("watch?v=")[1].split("&")[0];
+                            finalUrl = `https://www.youtube.com/embed/${videoId}`;
+                        } else if (finalUrl.includes("youtu.be/")) {
+                            const videoId = finalUrl.split("youtu.be/")[1].split("?")[0];
+                            finalUrl = `https://www.youtube.com/embed/${videoId}`;
+                        }
+                        
+                        iframe.src = finalUrl;
+                        alert("¡Video de YouTube actualizado con éxito!");
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
