@@ -214,7 +214,7 @@
 
         .card-img-container {
             position: relative;
-            height: 420px; /* Más altura para destacar las fotos de modelaje */
+            height: 420px;
             overflow: hidden;
             cursor: pointer;
         }
@@ -227,7 +227,7 @@
         }
 
         .disciplina-card:hover .card-img-container img {
-            transform: scale(1.08); /* Zoom editorial más elegante */
+            transform: scale(1.08);
         }
 
         .card-badge {
@@ -333,7 +333,7 @@
             outline: none;
         }
 
-        /* SECCIÓN VIDEOS (SOPORTE YOUTUBE E INSTAGRAM) */
+        /* SECCIÓN VIDEOS */
         .videos-section {
             padding: 100px 50px;
             background-color: var(--bg-dark);
@@ -372,12 +372,12 @@
 
         .video-frame {
             position: relative;
-            padding-bottom: 125%; /* Ideal para mostrar Reels de Instagram o videos verticales */
+            padding-bottom: 125%;
             height: 0;
             background: #000;
         }
 
-        .video-frame iframe, .video-frame video {
+        .video-frame iframe {
             position: absolute;
             top: 0;
             left: 0;
@@ -517,8 +517,8 @@
 </head>
 <body>
 
-    <!-- BOTÓN FLOTANTE DE WHATSAPP -->
-    <a href="https://wa.me/584120000000?text=Hola,%20deseo%20más%20información%20sobre%20las%20inscripciones%20y%20cursos%20del%20Instituto%20ACMo" class="whatsapp-float" target="_blank" title="Escríbenos por WhatsApp">
+    <!-- BOTÓN FLOTANTE DE WHATSAPP CON TU NÚMERO -->
+    <a href="https://wa.me/584121392237?text=Hola,%20deseo%20más%20información%20sobre%20las%20inscripciones%20y%20cursos%20del%20Instituto%20ACMo" class="whatsapp-float" target="_blank" title="Escríbenos por WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
@@ -639,7 +639,7 @@
         </div>
     </section>
 
-    <!-- SECCIÓN DE VIDEOS (YOUTUBE E INSTAGRAM REELS) -->
+    <!-- SECCIÓN DE VIDEOS -->
     <section id="videos" class="videos-section">
         <div class="section-header">
             <span class="section-tag" contenteditable="false">REDES Y PASARELAS</span>
@@ -681,15 +681,16 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- FOOTER CON NÚMERO DE TELÉFONO -->
     <footer id="contacto" class="footer">
         <div class="footer-content">
             <h3 contenteditable="false">ACMo Instituto</h3>
+            <p contenteditable="false">📞 Contacto Directo: +58 412-1392237</p>
             <p contenteditable="false">Transformando talentos en arte vivo.</p>
             <div class="social-icons">
                 <a href="#"><i class="fa-brands fa-instagram"></i></a>
                 <a href="#"><i class="fa-brands fa-tiktok"></i></a>
-                <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="https://wa.me/584121392237" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
             </div>
             <p class="copyright">© 2026 Instituto ACMO. Todos los derechos reservados.</p>
         </div>
@@ -734,16 +735,13 @@
                     if (nuevoLink && nuevoLink.trim() !== "") {
                         let finalUrl = nuevoLink.trim();
                         
-                        // Si es YouTube normal
                         if (finalUrl.includes("watch?v=")) {
                             const videoId = finalUrl.split("watch?v=")[1].split("&")[0];
                             finalUrl = `https://www.youtube.com/embed/${videoId}`;
                         } else if (finalUrl.includes("youtu.be/")) {
                             const videoId = finalUrl.split("youtu.be/")[1].split("?")[0];
                             finalUrl = `https://www.youtube.com/embed/${videoId}`;
-                        } 
-                        // Si es de Instagram (agrega /embed/ automáticamente si pegas el link del reel)
-                        else if (finalUrl.includes("instagram.com/reel/")) {
+                        } else if (finalUrl.includes("instagram.com/reel/")) {
                             let partes = finalUrl.split("?")[0];
                             if (!partes.endsWith("/")) partes += "/";
                             finalUrl = partes + "embed/";
