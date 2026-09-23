@@ -75,7 +75,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 30px;
+            gap: 25px;
         }
 
         .nav-links a {
@@ -214,7 +214,7 @@
 
         .card-img-container {
             position: relative;
-            height: 380px;
+            height: 420px; /* Más altura para destacar las fotos de modelaje */
             overflow: hidden;
             cursor: pointer;
         }
@@ -223,11 +223,11 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s;
+            transition: transform 0.6s ease;
         }
 
         .disciplina-card:hover .card-img-container img {
-            transform: scale(1.05);
+            transform: scale(1.08); /* Zoom editorial más elegante */
         }
 
         .card-badge {
@@ -261,17 +261,89 @@
             outline: none;
         }
 
-        /* SECCIÓN VIDEOS */
+        /* SECCIÓN ARTISTAS / TALENTO ACMO */
+        .artistas-section {
+            padding: 100px 50px;
+            background-color: #0c0c0c;
+            border-top: 1px solid var(--gray-contrast);
+        }
+
+        .artistas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .artista-card {
+            background: var(--bg-card);
+            border: 1px solid var(--gray-contrast);
+            text-align: center;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .artista-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .artista-img {
+            height: 380px;
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .artista-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s;
+        }
+
+        .artista-card:hover .artista-img img {
+            transform: scale(1.05);
+        }
+
+        .artista-info {
+            padding: 25px;
+        }
+
+        .artista-nombre {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            outline: none;
+        }
+
+        .artista-rol {
+            font-size: 0.75rem;
+            color: var(--accent);
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            display: block;
+            outline: none;
+        }
+
+        .artista-desc {
+            font-size: 0.85rem;
+            color: var(--gray-text);
+            outline: none;
+        }
+
+        /* SECCIÓN VIDEOS (SOPORTE YOUTUBE E INSTAGRAM) */
         .videos-section {
             padding: 100px 50px;
-            background-color: #0e0e0e;
+            background-color: var(--bg-dark);
             border-top: 1px solid var(--gray-contrast);
             border-bottom: 1px solid var(--gray-contrast);
         }
 
         .videos-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 40px;
             max-width: 1200px;
             margin: 0 auto;
@@ -300,20 +372,21 @@
 
         .video-frame {
             position: relative;
-            padding-bottom: 56.25%;
+            padding-bottom: 125%; /* Ideal para mostrar Reels de Instagram o videos verticales */
             height: 0;
             background: #000;
         }
 
-        .video-frame iframe {
+        .video-frame iframe, .video-frame video {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            border: none;
         }
 
-        /* SECCIÓN NOSOTROS */
+        /* SECCIÓN SOBRE NOSOTROS */
         .about-section {
             padding: 100px 50px;
             max-width: 1200px;
@@ -348,15 +421,46 @@
         }
 
         .about-img {
-            height: 450px;
+            height: 480px;
             border: 1px solid var(--gray-contrast);
             cursor: pointer;
+            overflow: hidden;
         }
 
         .about-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.6s;
+        }
+
+        .about-img:hover img {
+            transform: scale(1.05);
+        }
+
+        /* BOTÓN FLOTANTE DE WHATSAPP */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: #fff;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+            z-index: 2000;
+            transition: transform 0.3s, background-color 0.3s;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background-color: #20ba5a;
         }
 
         /* FOOTER */
@@ -407,11 +511,16 @@
             .navbar { padding: 15px 20px; }
             .about-grid { grid-template-columns: 1fr; }
             .videos-container { grid-template-columns: 1fr; }
-            .disciplinas-section, .videos-section, .about-section { padding: 60px 20px; }
+            .disciplinas-section, .videos-section, .about-section, .artistas-section { padding: 60px 20px; }
         }
     </style>
 </head>
 <body>
+
+    <!-- BOTÓN FLOTANTE DE WHATSAPP -->
+    <a href="https://wa.me/584120000000?text=Hola,%20deseo%20más%20información%20sobre%20las%20inscripciones%20y%20cursos%20del%20Instituto%20ACMo" class="whatsapp-float" target="_blank" title="Escríbenos por WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
 
     <!-- BARRA DE NAVEGACIÓN -->
     <header class="navbar">
@@ -422,11 +531,11 @@
         <nav class="nav-links">
             <a href="#inicio">Inicio</a>
             <a href="#disciplinas">Disciplinas</a>
-            <a href="#videos">Videos</a>
+            <a href="#artistas">Talento</a>
+            <a href="#videos">Multimedia</a>
             <a href="#nosotros">Nosotros</a>
             <a href="#contacto" class="btn-nav">Contacto</a>
         </nav>
-        <div class="menu-toggle"><i class="fa-solid fa-bars"></i></div>
     </header>
 
     <!-- HERO SECTION -->
@@ -449,9 +558,9 @@
         </div>
 
         <div class="disciplinas-grid">
-            <!-- 1. Alta Costura y Pasarela (Foto tuya en blanco y negro con vestido elegante) -->
+            <!-- 1. Alta Costura y Pasarela -->
             <div class="disciplina-card">
-                <div class="card-img-container" title="Doble clic para cambiar (Requiere contraseña de administrador)">
+                <div class="card-img-container" title="Doble clic para cambiar imagen">
                     <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&q=80&w=800" alt="Alta Costura y Pasarela" class="editable-img">
                     <div class="card-badge" contenteditable="false">ALTA COSTURA & PASARELA</div>
                 </div>
@@ -463,7 +572,7 @@
 
             <!-- 2. Modelaje Comercial -->
             <div class="disciplina-card">
-                <div class="card-img-container" title="Doble clic para cambiar (Requiere contraseña de administrador)">
+                <div class="card-img-container" title="Doble clic para cambiar imagen">
                     <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=800" alt="Modelaje Comercial" class="editable-img">
                     <div class="card-badge" contenteditable="false">FOTOGRAFÍA & PUBLICIDAD</div>
                 </div>
@@ -473,9 +582,9 @@
                 </div>
             </div>
 
-            <!-- 3. Danza Contemporánea (Bailarín) -->
+            <!-- 3. Danza Contemporánea -->
             <div class="disciplina-card">
-                <div class="card-img-container" title="Doble clic para cambiar (Requiere contraseña de administrador)">
+                <div class="card-img-container" title="Doble clic para cambiar imagen">
                     <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&q=80&w=800" alt="Danza Contemporánea" class="editable-img">
                     <div class="card-badge" contenteditable="false">DANZA CONTEMPORÁNEA</div>
                 </div>
@@ -487,26 +596,69 @@
         </div>
     </section>
 
-    <!-- SECCIÓN DE VIDEOS -->
+    <!-- SECCIÓN: ARTISTAS Y TALENTO DESTACADO -->
+    <section id="artistas" class="artistas-section">
+        <div class="section-header">
+            <span class="section-tag" contenteditable="false">EXCELENCIA EN ESCENA</span>
+            <h2 class="section-title" contenteditable="false">Artistas y Modelos ACMO</h2>
+        </div>
+
+        <div class="artistas-grid">
+            <div class="artista-card">
+                <div class="artista-img" title="Doble clic para cambiar foto">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=600" alt="Modelo Destacado" class="editable-img">
+                </div>
+                <div class="artista-info">
+                    <h3 class="artista-nombre" contenteditable="false">Alta Costura Editorial</h3>
+                    <span class="artista-rol" contenteditable="false">MODELO PROFESIONAL</span>
+                    <p class="artista-desc" contenteditable="false">Destacada por su impecable porte en pasarelas de alta gama y producciones conceptuales.</p>
+                </div>
+            </div>
+
+            <div class="artista-card">
+                <div class="artista-img" title="Doble clic para cambiar foto">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=600" alt="Bailarín Destacado" class="editable-img">
+                </div>
+                <div class="artista-info">
+                    <h3 class="artista-nombre" contenteditable="false">Danza Contemporánea</h3>
+                    <span class="artista-rol" contenteditable="false">BAILARÍN ESCÉNICO</span>
+                    <p class="artista-desc" contenteditable="false">Excepcional dominio corporal, fuerza interpretativa y fluidez rítmica en puestas en escena.</p>
+                </div>
+            </div>
+
+            <div class="artista-card">
+                <div class="artista-img" title="Doble clic para cambiar foto">
+                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=600" alt="Modelo Comercial" class="editable-img">
+                </div>
+                <div class="artista-info">
+                    <h3 class="artista-nombre" contenteditable="false">Campaña Publicitaria</h3>
+                    <span class="artista-rol" contenteditable="false">TALENTO COMERCIAL</span>
+                    <p class="artista-desc" contenteditable="false">Versatilidad absoluta ante el lente y naturalidad magnética para marcas y comerciales de televisión.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE VIDEOS (YOUTUBE E INSTAGRAM REELS) -->
     <section id="videos" class="videos-section">
         <div class="section-header">
-            <span class="section-tag" contenteditable="false">MULTIMEDIA</span>
-            <h2 class="section-title" contenteditable="false">Pasarelas y Showcases</h2>
+            <span class="section-tag" contenteditable="false">REDES Y PASARELAS</span>
+            <h2 class="section-title" contenteditable="false">Reels y Showcases en Vivo</h2>
         </div>
         <div class="videos-container">
             <div class="video-card">
                 <div class="video-frame">
-                    <iframe class="editable-video" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Pasarela ACMO 1" frameborder="0" allowfullscreen></iframe>
+                    <iframe class="editable-video" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Video ACMO 1" allowfullscreen></iframe>
                 </div>
-                <h4 contenteditable="false">Desfile de Alta Costura - Temporada Oficial</h4>
-                <p class="video-hint">🔒 Doble clic para cambiar enlace de YouTube (Solo Administrador)</p>
+                <h4 contenteditable="false">Desfile Oficial de Alta Costura</h4>
+                <p class="video-hint">🔒 Doble clic para cambiar (Soporta YouTube o enlace de Instagram Reel)</p>
             </div>
             <div class="video-card">
                 <div class="video-frame">
-                    <iframe class="editable-video" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Pasarela ACMO 2" frameborder="0" allowfullscreen></iframe>
+                    <iframe class="editable-video" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Video ACMO 2" allowfullscreen></iframe>
                 </div>
-                <h4 contenteditable="false">Showcase de Modelaje Comercial y Estética</h4>
-                <p class="video-hint">🔒 Doble clic para cambiar enlace de YouTube (Solo Administrador)</p>
+                <h4 contenteditable="false">Backstage y Danza Contemporánea</h4>
+                <p class="video-hint">🔒 Doble clic para cambiar (Soporta YouTube o enlace de Instagram Reel)</p>
             </div>
         </div>
     </section>
@@ -544,7 +696,6 @@
     </footer>
 
     <script>
-        // CLAVE DE SEGURIDAD PARA EDITAR (Puedes cambiar "yhosttin2026" por la clave que prefieras)
         const ADMIN_PASSWORD = "yhosttin2026";
 
         function verificarAdmin() {
@@ -558,7 +709,6 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            // 1. Cambiar imágenes con doble clic (Protegido por contraseña)
             const imagenes = document.querySelectorAll('.editable-img');
             imagenes.forEach(img => {
                 img.parentElement.addEventListener('dblclick', () => {
@@ -572,7 +722,6 @@
                 });
             });
 
-            // 2. Cambiar videos de YouTube con doble clic (Protegido por contraseña)
             const tarjetasVideo = document.querySelectorAll('.video-card');
             tarjetasVideo.forEach(card => {
                 card.addEventListener('dblclick', () => {
@@ -580,20 +729,28 @@
 
                     const iframe = card.querySelector('.editable-video');
                     const linkActual = iframe.src;
-                    const nuevoLink = prompt("Ingresa el enlace de YouTube (ej: https://www.youtube.com/watch?v=XXXX):", linkActual);
+                    const nuevoLink = prompt("Ingresa el enlace de YouTube o Instagram (ej: enlace del Reel o video):", linkActual);
                     
                     if (nuevoLink && nuevoLink.trim() !== "") {
                         let finalUrl = nuevoLink.trim();
+                        
+                        // Si es YouTube normal
                         if (finalUrl.includes("watch?v=")) {
                             const videoId = finalUrl.split("watch?v=")[1].split("&")[0];
                             finalUrl = `https://www.youtube.com/embed/${videoId}`;
                         } else if (finalUrl.includes("youtu.be/")) {
                             const videoId = finalUrl.split("youtu.be/")[1].split("?")[0];
                             finalUrl = `https://www.youtube.com/embed/${videoId}`;
+                        } 
+                        // Si es de Instagram (agrega /embed/ automáticamente si pegas el link del reel)
+                        else if (finalUrl.includes("instagram.com/reel/")) {
+                            let partes = finalUrl.split("?")[0];
+                            if (!partes.endsWith("/")) partes += "/";
+                            finalUrl = partes + "embed/";
                         }
                         
                         iframe.src = finalUrl;
-                        alert("¡Video de YouTube actualizado con éxito!");
+                        alert("¡Video actualizado con éxito!");
                     }
                 });
             });
